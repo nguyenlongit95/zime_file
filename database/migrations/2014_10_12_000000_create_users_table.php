@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("package_id")->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -23,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('role')->default(1); // 0: admin, 1: user
             $table->string('address')->nullable();
             $table->rememberToken();
+//            $table->foreign("package_id")->references("id")->on("packages")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }
