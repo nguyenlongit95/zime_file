@@ -22,4 +22,8 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
     {
         return User::class;
     }
+
+    /**
+     * Function detail here
+     */
 }
