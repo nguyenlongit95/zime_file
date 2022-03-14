@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('role')->default(1); // 0: admin, 1: user
             $table->string('address')->nullable();
             $table->rememberToken();
-//            $table->foreign("package_id")->references("id")->on("packages")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }

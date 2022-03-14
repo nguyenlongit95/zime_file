@@ -11,7 +11,11 @@ class Files extends Model
 
     protected $table = "Files";
 
-    protected $fillable = ["user_id", "name", "file_size"];
+    protected $fillable = [
+        "user_id",
+        "name",
+        "file_size",
+    ];
 
     protected $primaryKey = "id";
 

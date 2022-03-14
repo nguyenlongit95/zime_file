@@ -15,7 +15,6 @@ class CreatePackagesTable extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            //["id", "name", "max_file_upload", "max_file_size"]
             $table->string("name");
             $table->unsignedInteger("max_file_size")->nullable();
             $table->unsignedInteger("max_file_upload")->nullable();

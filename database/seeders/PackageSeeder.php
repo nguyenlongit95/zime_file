@@ -16,7 +16,7 @@ class PackageSeeder extends Seeder
     {
         //
         DB::table("packages")->insert([
-           'name' => 'basic',
+           'name' => 'Basic',
             "max_file_upload" => 4,
             'max_file_size' => 64,
         ]);

@@ -11,7 +11,11 @@ class Packages extends Model
 
     protected $table = "Packages";
 
-    protected $fillable = ["name", "max_file_upload", "max_file_size"];
+    protected $fillable = [
+        "name",
+        "max_file_upload",
+        "max_file_size",
+    ];
 
     protected $primaryKey = "id";
 }
