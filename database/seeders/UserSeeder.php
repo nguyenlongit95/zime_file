@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // Admin record
         DB::table('users')->insert([
             'name' => 'Admin',
             'package_id' => 1,
@@ -33,6 +33,5 @@ class UserSeeder extends Seeder
             'phone' => '1234567890',
             'role' => 1
         ]);
-
     }
 }
