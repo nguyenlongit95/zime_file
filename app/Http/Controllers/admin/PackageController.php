@@ -24,6 +24,8 @@ class PackageController extends Controller
     }
 
     /**
+     * Controller index function
+     *
      * @param Request $request
      * @return mixed
      */

@@ -24,6 +24,8 @@ class FileController extends Controller
     }
 
     /**
+     * Controller index function
+     *
      * @param Request $request
      * @return mixed
      */
