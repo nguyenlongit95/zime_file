@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\file;
+namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Files\FileRepositoryInterface;

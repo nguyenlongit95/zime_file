@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\package;
+namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Packages\PackageRepositoryInterface;
