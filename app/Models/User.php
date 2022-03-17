@@ -52,6 +52,6 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function package() {
-        return $this->belongsTo(Packages::class, "package_id", "id");
+        return $this->belongsTo(Package::class, "package_id", "id");
     }
 }
