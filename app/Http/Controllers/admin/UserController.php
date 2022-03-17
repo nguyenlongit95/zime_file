@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\Users\UserRepositoryInterface;
 use App\Validations\Validation;
 use Illuminate\Http\Request;
 
@@ -24,12 +24,14 @@ class UserController extends Controller
     }
 
     /**
-     * Index controller function
+     * Controller index function
      *
      * @param Request $request
+     * @return mixed
      */
     public function index(Request $request)
     {
         Validation::userValidation($request);
+        return $this->userRepository->getAll(config('const.paginate'), 'DESC');
     }
 }
