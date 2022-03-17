@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Files extends Model
+class File extends Model
 {
     use HasFactory;
 
-    protected $table = "Files";
+    protected $table = "File";
 
     protected $fillable = [
         "user_id",

@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Files;
 
-use App\Models\Files;
+use App\Models\File;
 use App\Repositories\Eloquent\EloquentRepository;
 
 class FileEloquentRepository extends EloquentRepository implements FileRepositoryInterface
@@ -12,6 +12,6 @@ class FileEloquentRepository extends EloquentRepository implements FileRepositor
      */
     public function getModel()
     {
-        return Files::class;
+        return File::class;
     }
 }

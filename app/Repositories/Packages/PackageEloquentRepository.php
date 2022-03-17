@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Packages;
 
-use App\Models\Packages;
+use App\Models\Package;
 use App\Repositories\Eloquent\EloquentRepository;
 
 class PackageEloquentRepository extends EloquentRepository implements PackageRepositoryInterface
@@ -12,6 +12,6 @@ class PackageEloquentRepository extends EloquentRepository implements PackageRep
      */
     public function getModel()
     {
-        return Packages::class;
+        return Package::class;
     }
 }
