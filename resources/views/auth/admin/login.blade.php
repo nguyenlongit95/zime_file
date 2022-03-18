@@ -47,19 +47,6 @@
     button:hover {
         opacity: 0.8;
     }
-    .signup_link{
-        margin: 15px 0 0 0;
-        text-align: center;
-        font-size: 16px;
-        color: #666666;
-    }
-    .signup_link a{
-        color: #2691d9;
-        text-decoration: none;
-    }
-    .signup_link a:hover{
-        text-decoration: underline;
-    }
 </style>
 <body>
     <div class="container-form">
@@ -69,9 +56,6 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
             <button type="submit">Login</button>
-            <div class="signup_link">
-                Not a member? <a href="#">Signup</a>
-            </div>
         </form>
     </div>
 </body>

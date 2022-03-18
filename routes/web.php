@@ -19,4 +19,6 @@ Route::get('/', function () {
 
 Route::get('/test', [\App\Http\Controllers\admin\UserController::class, 'index']);
 
+Route::get('/admin/login', [\App\Http\Controllers\Auth\AuthController::class, 'adminLogin']);
+
 Route::get('/login', [\App\Http\Controllers\Auth\AuthController::class, 'login']);
