@@ -14,4 +14,13 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
     {
         return User::class;
     }
+
+    /**
+     * @param $userId
+     * @return
+     */
+    public function checkRole($userId)
+    {
+        // Check role of user
+    }
 }
