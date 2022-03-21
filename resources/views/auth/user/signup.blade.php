@@ -5,8 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>User Login</title>
+    <title>User Signup</title>
 </head>
 <style>
     body{
@@ -20,7 +19,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 10%;
+        margin-top: 4%;
     }
     form {
         border: 3px solid #f1f1f1;
@@ -69,17 +68,16 @@
 </style>
 <body>
 <div class="container-form">
-    <form action="{{ url("/login") }}" method="post">
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @elseif (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
+    <form action="{{ url('/signup') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <label for="name"><b>Name</b></label>
+        <input type="text" placeholder="Enter Name" name="name" value="{{ old("name") }}">
+        @if ($errors->has('name'))
+            <div class="help-block">
+                {{ $errors->first('name') }}
+            </div>
+            <br>
+        @endif
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" value="{{ old("email") }}">
         @if ($errors->has('email'))
@@ -96,9 +94,17 @@
             </div>
             <br>
         @endif
-        <button type="submit">Login</button>
+        <label for="psw-confirm"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Enter Confirm Password" name="password_confirmation">
+        @if ($errors->has('password_confirmation'))
+            <div class="help-block">
+                {{ $errors->first('password_confirmation') }}
+            </div>
+            <br>
+        @endif
+        <button type="submit">Sign Up</button>
         <div class="signup_link">
-            Not a member? <a href="{{ url("/signup") }}">Signup</a>
+            Have the account? <a href="{{ url("/login") }}">Login</a>
         </div>
     </form>
 </div>
