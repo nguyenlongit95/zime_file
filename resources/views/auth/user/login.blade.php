@@ -69,19 +69,19 @@
 </style>
 <body>
 <div class="container-form">
-    <form action="{{url("/login")}}" method="post">
+    <form action="{{ url("/login") }}" method="post">
         @if (session('status'))
             <div class="alert alert-success">
-                {{session('status')}}
+                {{ session('status') }}
             </div>
         @elseif (session('error'))
             <div class="alert alert-danger">
-                {{session('error')}}
+                {{ session('error') }}
             </div>
         @endif
-        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" value="{{old("email")}}">
+        <input type="text" placeholder="Enter Email" name="email" value="{{ old("email") }}">
         @if ($errors->has('email'))
             <div class="help-block">
                 {{ $errors->first('email') }}
@@ -98,7 +98,7 @@
         @endif
         <button type="submit">Login</button>
         <div class="signup_link">
-            Not a member? <a href="/signup">Signup</a>
+            Not a member? <a href="{{ url("/signup") }}">Signup</a>
         </div>
     </form>
 </div>

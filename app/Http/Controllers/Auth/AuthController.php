@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Repositories\Users\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +13,21 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
     /**
-     * Show login form
+     * @var UserRepositoryInterface
+     */
+    protected $userRepository;
+
+    /**
+     * AuthController constructor
+     * @param UserRepositoryInterface $userRepository
+     */
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+    /**
+     * Show user login form
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -23,7 +38,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Process login form
+     * Process user login form
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -40,11 +55,11 @@ class AuthController extends Controller
             'password' => $request->get("password"),
         );
 
-        if(Auth::attempt($user_data))
-        {
+        if(Auth::attempt($user_data)) {
+            // Todo return token
             return redirect('/home');
-        }else{
-            return back()->with("error", lang_path("en.auth.failed"));
+        } else {
+            return back()->with("error", trans("auth.login_failed"));
         }
     }
 
@@ -79,12 +94,13 @@ class AuthController extends Controller
             ->withErrors($validator);
         } else {
             $data = $request->all();
-            $user = new User();
-            $user->name = $data['name'];
-            $user->email = $data['email'];
-            $user->password = Hash::make($data['password']);
-            $user->save();
-            return redirect('login')->with('status',lang_path("en.auth.signup_success"));
+            $data['password'] = Hash::make($data['password']);
+            try{
+                $this->userRepository->create($data);
+                return redirect('login')->with('status', trans("auth.signup_success"));
+            } catch (\Exception $exception) {
+                return redirect('signup')->with('status', trans("auth.signup_failed"));
+            }
         }
     }
 
@@ -117,11 +133,10 @@ class AuthController extends Controller
             'password' => $request->get("password"),
         );
 
-        if(Auth::attempt($user_data))
-        {
+        if(Auth::attempt($user_data)) {
             return redirect('/admin/dashboard');
-        }else{
-            return back()->with("error", lang_path("en.auth.failed"));
+        } else {
+            return back()->with("error", trans("auth.login_failed"));
         }
     }
 }

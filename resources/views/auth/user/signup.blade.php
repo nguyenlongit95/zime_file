@@ -69,9 +69,9 @@
 <body>
 <div class="container-form">
     <form action="{{ url('/signup') }}" method="post">
-        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <label for="name"><b>Name</b></label>
-        <input type="text" placeholder="Enter Name" name="name" value="{{old("name")}}">
+        <input type="text" placeholder="Enter Name" name="name" value="{{ old("name") }}">
         @if ($errors->has('name'))
             <div class="help-block">
                 {{ $errors->first('name') }}
@@ -79,7 +79,7 @@
             <br>
         @endif
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" value="{{old("email")}}">
+        <input type="text" placeholder="Enter Email" name="email" value="{{ old("email") }}">
         @if ($errors->has('email'))
             <div class="help-block">
                 {{ $errors->first('email') }}
@@ -104,7 +104,7 @@
         @endif
         <button type="submit">Sign Up</button>
         <div class="signup_link">
-            Have the account? <a href="/login">Login</a>
+            Have the account? <a href="{{ url("/login") }}">Login</a>
         </div>
     </form>
 </div>

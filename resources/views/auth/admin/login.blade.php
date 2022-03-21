@@ -56,15 +56,15 @@
 </style>
 <body>
 <div class="container-form">
-    <form action="{{url("/admin/login")}}" method="post">
+    <form action="{{ url("/admin/login") }}" method="post">
         @if (session('error'))
             <div class="alert alert-danger">
-                {{session('error')}}
+                {{ session('error') }}
             </div>
         @endif
-        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" value="{{old("email")}}">
+        <input type="text" placeholder="Enter Email" name="email" value="{{ old("email") }}">
         @if ($errors->has('email'))
             <div class="help-block">
                 {{ $errors->first('email') }}

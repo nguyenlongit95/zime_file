@@ -17,4 +17,6 @@ return [
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'signup_success' => 'Sign up success',
+    'signup_failed' => 'Sign up failed',
+    'login_failed' => 'Your account does not exit',
 ];
