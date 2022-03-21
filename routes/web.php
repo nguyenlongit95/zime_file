@@ -21,4 +21,12 @@ Route::get('/test', [\App\Http\Controllers\admin\UserController::class, 'index']
 
 Route::get('/admin/login', [\App\Http\Controllers\Auth\AuthController::class, 'adminLogin']);
 
-Route::get('/login', [\App\Http\Controllers\Auth\AuthController::class, 'login']);
+Route::post('/admin/login', [\App\Http\Controllers\Auth\AuthController::class, 'process_adminLogin']);
+
+Route::get('/login', [\App\Http\Controllers\Auth\AuthController::class, 'login_form']);
+
+Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, 'process_login']);
+
+Route::get('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'signup_form']);
+
+Route::post('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'process_signup']);

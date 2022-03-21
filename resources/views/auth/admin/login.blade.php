@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Admin Login</title>
 </head>
 <style>
@@ -47,16 +48,39 @@
     button:hover {
         opacity: 0.8;
     }
+    .help-block{
+        height: 10px;
+        color: red;
+        font-size: 14px;
+    }
 </style>
 <body>
-    <div class="container-form">
-        <form action="" method="post">
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-            <button type="submit">Login</button>
-        </form>
-    </div>
+<div class="container-form">
+    <form action="{{url("/admin/login")}}" method="post">
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{session('error')}}
+            </div>
+        @endif
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" value="{{old("email")}}">
+        @if ($errors->has('email'))
+            <div class="help-block">
+                {{ $errors->first('email') }}
+            </div>
+            <br>
+        @endif
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password">
+        @if ($errors->has('password'))
+            <div class="help-block">
+                {{ $errors->first('password') }}
+            </div>
+            <br>
+        @endif
+        <button type="submit">Login</button>
+    </form>
+</div>
 </body>
 </html>
