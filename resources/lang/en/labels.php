@@ -1,33 +1,8 @@
 <?php
 return [
     'footer_text' => 'All rights reserved.',
-    'navbar_content1' => 'Home',
-    'navbar_content2' => 'Contact',
-    'dropdown_item' => 'Brad Diesel',
-    'dropdown_text1' => 'Call me whenever you can...',
-    'dropdown_text2' => ' 4 Hours Ago',
-    'message_item1' => 'John Pierce',
-    'message_text1_1' => 'I got your message bro',
-    'message_text1_2' => ' 4 Hours Ago',
-    'message_item2' => 'John Pierce',
-    'message_text2_1' => 'I got your message bro',
-    'message_text2_2' => ' 4 Hours Ago',
-    'message_text2_3' => 'See All Messages',
-    'notification_warning' => '15',
-    'notification_header' => '15 Notifications',
-    'notification_item1' => '4 new messages',
-    'notification_item2' => '8 friend requests',
-    'notification_item3' => '3 new reports',
-    'notification_text1' => '4 new messages',
-    'notification_text2' => '8 friend requests',
-    'notification_text3' => '3 new reports',
-    'notification_footer' => 'See All Notifications',
-    'sidebar_title' => 'AdminLTE 3',
-    'sidebar_name' => 'Alexander Pierce',
-    'sidebar_dashboard' => 'Dashboard',
-    'sidebar_item1' => 'Dashboard v1',
-    'sidebar_item2' => 'Dashboard v2',
-    'sidebar_item3' => 'Dashboard v3',
-
-
+    'side_bar' => [
+        'item_1' => 'Dashboard',
+        'item_2' => '',
+    ],
 ];
