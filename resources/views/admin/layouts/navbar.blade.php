@@ -5,10 +5,10 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="index3.html" class="nav-link">{{ trans("labels.navbar_content1") }}</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="#" class="nav-link">{{ trans("labels.navbar_content2") }}</a>
         </li>
     </ul>
 
@@ -49,11 +49,11 @@
                         <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
-                                Brad Diesel
+                                {{ trans('labels.dropdown_item') }}
                                 <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                             </h3>
-                            <p class="text-sm">Call me whenever you can...</p>
-                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            <p class="text-sm">{{ trans('labels.dropdown_text1') }}</p>
+                            <p class="text-sm text-muted"><i class="far fa-clock mr-1">{{ trans('labels.dropdown_text2') }}</i></p>
                         </div>
                     </div>
                     <!-- Message End -->
@@ -65,11 +65,11 @@
                         <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
-                                John Pierce
-                                <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                {{ trans("labels.message_item1") }}
+                                <span class="float-right text-sm text-muted"><i class="fas fa-star"></i>{{ trans("labels.message_text1_1") }}</span>
                             </h3>
-                            <p class="text-sm">I got your message bro</p>
-                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            <p class="text-sm"></p>
+                            <p class="text-sm text-muted"><i class="far fa-clock mr-1">{{ trans("labels.message_text1_2") }}</i></p>
                         </div>
                     </div>
                     <!-- Message End -->
@@ -81,44 +81,44 @@
                         <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
-                                Nora Silvester
+                                {{ trans("labels.message_item2") }}
                                 <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
                             </h3>
-                            <p class="text-sm">The subject goes here</p>
-                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            <p class="text-sm">{{ trans("labels.message_text2_1") }}</p>
+                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>{{ trans("labels.message_text2_2") }}</p>
                         </div>
                     </div>
                     <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                <a href="#" class="dropdown-item dropdown-footer">{{ trans("labels.message_text2_3") }}</a>
             </div>
         </li>
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
+                <span class="badge badge-warning navbar-badge">{{ trans("labels.notification_warning") }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">15 Notifications</span>
+                <span class="dropdown-item dropdown-header">{{ trans("labels.notification_header") }}</span>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> 4 new messages
-                    <span class="float-right text-muted text-sm">3 mins</span>
+                    <i class="fas fa-envelope mr-2"></i> {{ trans("labels.notification_item1") }}
+                    <span class="float-right text-muted text-sm">{{ trans("labels.notification_text1") }}</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
-                    <i class="fas fa-users mr-2"></i> 8 friend requests
-                    <span class="float-right text-muted text-sm">12 hours</span>
+                    <i class="fas fa-users mr-2"></i> {{ trans("labels.notification_item2") }}
+                    <span class="float-right text-muted text-sm">{{ trans("labels.notification_text2") }}</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
-                    <i class="fas fa-file mr-2"></i> 3 new reports
-                    <span class="float-right text-muted text-sm">2 days</span>
+                    <i class="fas fa-file mr-2"></i> {{ trans("labels.notification_item3") }}
+                    <span class="float-right text-muted text-sm">{{ trans("labels.notification_text3") }}</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                <a href="#" class="dropdown-item dropdown-footer">{{ trans("labels.notification_footer") }}</a>
             </div>
         </li>
         <li class="nav-item">
