@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
-use App\Repositories\User\UserEloquentRepository;
-use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\Files\FileEloquentRepository;
+use App\Repositories\Files\FileRepositoryInterface;
+use App\Repositories\Packages\PackageEloquentRepository;
+use App\Repositories\Packages\PackageRepositoryInterface;
+use App\Repositories\Users\UserEloquentRepository;
+use App\Repositories\Users\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,10 +19,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
         $this->app->bind(
             UserRepositoryInterface::class,
             UserEloquentRepository::class
+        );
+        $this->app->bind(
+            FileRepositoryInterface::class,
+            FileEloquentRepository::class
+        );
+        $this->app->bind(
+            PackageRepositoryInterface::class,
+            PackageEloquentRepository::class
         );
     }
 
