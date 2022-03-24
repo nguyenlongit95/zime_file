@@ -30,3 +30,7 @@ Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, 'proces
 Route::get('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'signup_form']);
 
 Route::post('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'process_signup']);
+
+Route::group(["prefix" => "admin"], function () {
+   Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'dashboard']);
+});
