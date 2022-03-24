@@ -4,9 +4,16 @@ namespace App\Validations;
 
 class Validation
 {
-    public static function userValidation($request)
+    /**
+     * @param $request
+     * @return void
+     */
+    public static function packageValidation($request)
     {
-        // detail validation here
-        // git
+        $request->validate([
+            'name' => 'require|in:Basic,Medium,Advanced',
+            'max_file_size' => 'require',
+            'max_file_upload' => 'require|integer',
+        ]);
     }
 }

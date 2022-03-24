@@ -9,8 +9,6 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $table = "File";
-
     protected $fillable = [
         "user_id",
         "name",

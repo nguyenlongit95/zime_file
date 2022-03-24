@@ -19,4 +19,14 @@ return [
     'signup_success' => 'Sign up success',
     'signup_failed' => 'Sign up failed',
     'login_failed' => 'Your account does not exit',
+    'admin' => [
+        'create' => [
+            'success' => 'Create package success',
+            'failed' => 'Create package failed'
+        ],
+        'update' => [
+            'success' => 'Package updated',
+            'failed' => 'Failed to update',
+        ]
+    ]
 ];

@@ -32,5 +32,13 @@ Route::get('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'signup
 Route::post('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'process_signup']);
 
 Route::group(["prefix" => "admin"], function () {
-   Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'dashboard']);
+    Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'dashboard']);
+
+    Route::group(["prefix" => "packages"], function () {
+        Route::get('/', [\App\Http\Controllers\admin\PackageController::class, 'index']);
+        Route::get('/add', [\App\Http\Controllers\admin\PackageController::class, 'createForm']);
+        Route::post('/store', [\App\Http\Controllers\admin\PackageController::class, 'store']);
+        Route::get('/{id}/edit',[\App\Http\Controllers\admin\PackageController::class, 'editForm']);
+        Route::post('/{id}/update',[\App\Http\Controllers\admin\PackageController::class, 'update']);
+    });
 });
