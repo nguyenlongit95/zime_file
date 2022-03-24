@@ -18,7 +18,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'package_id',
         'name',
         'email',
         'password',
@@ -45,13 +44,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * Relationship with packages table
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function package() {
-        return $this->belongsTo(Package::class, "package_id", "id");
-    }
 }
