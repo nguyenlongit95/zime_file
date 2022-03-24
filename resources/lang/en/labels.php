@@ -9,4 +9,9 @@ return [
         'item_3' => 'Files',
         'item_4' => 'Users',
     ],
+    'admin' => [
+        'packages' => [
+            'bread_crum' => 'Packages',
+        ],
+    ],
 ];
