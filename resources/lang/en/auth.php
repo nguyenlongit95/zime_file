@@ -22,11 +22,16 @@ return [
     'admin' => [
         'create' => [
             'success' => 'Create package success',
-            'failed' => 'Create package failed'
+            'failed' => 'Create package failed',
         ],
         'update' => [
             'success' => 'Package updated',
             'failed' => 'Failed to update',
+        ],
+        'delete' => [
+            'success' => 'Package deleted',
+            'existed' => 'Package is using',
+            'failed' => 'Failed to deleted',
         ]
     ]
 ];

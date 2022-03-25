@@ -35,20 +35,38 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
                                         <label> {{ trans("labels.admin.add.form_label1") }} </label>
-                                        <input type="text" name="name" class="form-control">
+                                        <input type="text" name="name" class="form-control" value="{{ old("name") }}">
+                                        @if ($errors->has('name'))
+                                            <p style="height: 0; color: red; margin: 0">
+                                                {{ $errors->first('name') }}
+                                            </p>
+                                            <br>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label> {{ trans("labels.admin.add.form_label2") }} </label><br>
-                                        <input type="radio" name="max_file_size" value="{{ trans("labels.admin.add.radio1") }}">
+                                        <input type="radio" name="max_file_size" id="16" value="{{ trans("labels.admin.add.radio1") }} @if( old("max_file_size") == config("const.package.max_file_size")[0]) checked @endif ">
                                         <label> {{ trans("labels.admin.add.radio1") }} </label><br>
-                                        <input type="radio" name="max_file_size" value="{{ trans("labels.admin.add.radio2") }}">
+                                        <input type="radio" name="max_file_size" value="{{ trans("labels.admin.add.radio2") }} @if( old("max_file_size") == config("const.package.max_file_size")[1]) checked @endif ">
                                         <label> {{ trans("labels.admin.add.radio2") }} </label><br>
-                                        <input type="radio" name="max_file_size" value="{{ trans("labels.admin.add.radio3") }}">
+                                        <input type="radio" name="max_file_size" value="{{ trans("labels.admin.add.radio3") }} @if( old("max_file_size") == config("const.package.max_file_size")[2]) checked @endif ">
                                         <label> {{ trans("labels.admin.add.radio3") }} </label><br>
+                                        @if ($errors->has('max_file_size'))
+                                            <p style="height: 0; color: red; margin: 0">
+                                                {{ $errors->first('max_file_size') }}
+                                            </p>
+                                            <br>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label> {{ trans("labels.admin.add.form_label3") }} </label>
-                                        <input type="text" name="max_file_upload" class="form-control">
+                                        <input type="number" name="max_file_upload" class="form-control" value="{{ old("max_file_upload") }}" min="1" max="20">
+                                        @if ($errors->has('max_file_upload'))
+                                            <p style="height: 0; color: red; margin: 0">
+                                                {{ $errors->first('max_file_upload') }}
+                                            </p>
+                                            <br>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary"> {{ trans("labels.admin.btn.btn_save") }} </button>
