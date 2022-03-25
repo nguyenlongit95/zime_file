@@ -26,7 +26,7 @@
                             </div>
                             <div class="card-body">
 
-                                <form action="/admin/packages/{{$package->id}}/update" method="post">
+                                <form action="{{ url("/admin/packages/".$package->id."/update") }}" method="post">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
                                         <label> {{ trans("labels.admin.add.form_label1") }} </label>

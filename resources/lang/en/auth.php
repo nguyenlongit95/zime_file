@@ -20,6 +20,7 @@ return [
     'signup_failed' => 'Sign up failed',
     'login_failed' => 'Your account does not exit',
     'admin' => [
+        'empty' => 'Data not found',
         'create' => [
             'success' => 'Create package success',
             'failed' => 'Create package failed',

@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Package;
 use App\Repositories\Packages\PackageRepositoryInterface;
 use App\Repositories\Users\UserRepositoryInterface;
 use App\Validations\Validation;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use function config;
 
@@ -17,12 +14,16 @@ class PackageController extends Controller
 {
     /**
      * @var PackageRepositoryInterface
+     * @var UserRepositoryInterface
      */
     protected $packageRepository;
+
     protected $userRepository;
+
     /**
-     * PackageController constructor
+     * Constructor
      * @param PackageRepositoryInterface $packageRepository
+     * @param UserRepositoryInterface $userRepository
      */
     public function __construct(PackageRepositoryInterface $packageRepository, UserRepositoryInterface $userRepository)
     {
@@ -63,7 +64,7 @@ class PackageController extends Controller
     {
         Validation::packageValidation($request);
         $data = $request->all();
-        try{
+        try {
             $this->packageRepository->create($data);
             return redirect('/admin/packages')->with('success', trans("auth.admin.create.success"));
         } catch (\Exception $exception) {
@@ -74,12 +75,15 @@ class PackageController extends Controller
     /**
      * Edit package form
      *
-     * @param Request $request
+     * @param $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function editForm($id)
     {
         $package = $this->packageRepository->find($id);
+        if(empty($package)) {
+            return redirect('admin/packages')->with('failed', trans("auth.admin.empty"));
+        }
         return view('admin.pages.packages.edit', ['package' => $package]);
     }
 
@@ -95,10 +99,10 @@ class PackageController extends Controller
         Validation::packageValidation($request);
         $data = $request->all();
         $package = $this->packageRepository->find($id);
-        if(empty($package)){
-            return redirect()->back()->with('failed');
+        if(empty($package)) {
+            return redirect()->back()->with('failed')->with('failed', trans("auth.admin.empty"));;
         }
-        try{
+        try {
             $this->packageRepository->update($data, $package->id);
             return redirect('admin/packages')->with('success', trans("auth.admin.update.success"));
         } catch (\Exception $exception) {
@@ -116,17 +120,17 @@ class PackageController extends Controller
     public function destroy($id)
     {
         $package= $this->packageRepository->find($id);
-        if(empty($package)){
-            return redirect()->back()->with('failed');
+        if(empty($package)) {
+            return redirect()->back()->with('failed')->with('failed', trans("auth.admin.empty"));;
         }
         $packageId = $package->id;
         $users = $this->userRepository->listAll();
         $check = false;
-        foreach ($users as $user ){
+        foreach ($users as $user ) {
             if($user->package_id == $packageId)
                 $check = true;
         }
-        if(!$check){
+        if(!$check) {
             try {
                 $this->packageRepository->delete($packageId);
                 return redirect('admin/packages')->with('success', trans("auth.admin.delete.success"));

@@ -24,7 +24,12 @@
                             <div class="card-header">
                                 <a href="{{ url("/admin/packages/add") }}" class="btn btn-primary btn-sm float-right"> {{ trans('labels.admin.btn.btn_create') }}</a>
                             </div>
-                            <div class="card-body">
+                            @if(count($data) == 0)
+                                <div class="card-body">
+                                    <p class="card-text" style="font-size: 20px; color: red">{{ trans('auth.admin.empty') }}</p>
+                                </div>
+                            @else
+                                <div class="card-body">
                                 <table class="table table-bordered table-striped table-hover">
                                     <thead>
                                     <tr>
@@ -44,10 +49,10 @@
                                             <td> {{ $package->max_file_size }} </td>
                                             <td> {{ $package->max_file_upload }} </td>
                                             <td>
-                                                <a href="/admin/packages/{{ $package->id }}/edit" class="btn btn-sm btn-success"> {{ trans("labels.admin.btn.btn_edit") }} </a>
+                                                <a href="{{ url("/admin/packages/".$package->id."/edit") }}" class="btn btn-sm btn-success"> {{ trans("labels.admin.btn.btn_edit") }} </a>
                                             </td>
                                             <td>
-                                                <form action="/admin/packages/{{ $package->id }}/delete" method="POST">
+                                                <form action="{{ url("/admin/packages/".$package->id."/delete") }}" method="POST">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger"> {{ trans("labels.admin.btn.btn_delete") }} </button>
@@ -55,9 +60,11 @@
                                             </td>
                                         </tr>
                                     @endforeach
+{{--                                    {!! $editors->appends($_GET)->links() !!}--}}
                                     </tbody>
                                 </table>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
