@@ -38,7 +38,7 @@ class PackageController extends Controller
      */
     public function index(Request $request)
     {
-        $data =  $this->packageRepository->getAll(config('const.paginate'), 'ASC');
+        $data = $this->packageRepository->getAll(config('const.paginate'), 'ASC');
         return view("admin.pages.packages.index", compact('data'));
     }
 
@@ -99,7 +99,7 @@ class PackageController extends Controller
         $data = $request->all();
         $package = $this->packageRepository->find($id);
         if(empty($package)) {
-            return redirect()->back()->with('failed')->with('failed', trans("auth.admin.empty"));
+            return redirect()->back()->with('failed', trans("auth.admin.empty"));
         }
         try {
             $this->packageRepository->update($data, $package->id);
@@ -120,7 +120,7 @@ class PackageController extends Controller
     {
         $package = $this->packageRepository->find($id);
         if(empty($package)) {
-            return redirect()->back()->with('failed')->with('failed', trans("auth.admin.empty"));
+            return redirect()->back()->with('failed', trans("auth.admin.empty"));
         }
         $packageId = $package->id;
         $users = $this->userRepository->listAll();
