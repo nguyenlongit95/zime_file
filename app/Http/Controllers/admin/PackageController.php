@@ -17,7 +17,6 @@ class PackageController extends Controller
      * @var UserRepositoryInterface
      */
     protected $packageRepository;
-
     protected $userRepository;
 
     /**
@@ -100,7 +99,7 @@ class PackageController extends Controller
         $data = $request->all();
         $package = $this->packageRepository->find($id);
         if(empty($package)) {
-            return redirect()->back()->with('failed')->with('failed', trans("auth.admin.empty"));;
+            return redirect()->back()->with('failed')->with('failed', trans("auth.admin.empty"));
         }
         try {
             $this->packageRepository->update($data, $package->id);
@@ -119,9 +118,9 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        $package= $this->packageRepository->find($id);
+        $package = $this->packageRepository->find($id);
         if(empty($package)) {
-            return redirect()->back()->with('failed')->with('failed', trans("auth.admin.empty"));;
+            return redirect()->back()->with('failed')->with('failed', trans("auth.admin.empty"));
         }
         $packageId = $package->id;
         $users = $this->userRepository->listAll();
