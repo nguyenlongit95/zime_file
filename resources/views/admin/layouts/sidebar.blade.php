@@ -23,7 +23,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{ url("/admin/dashboard") }}" class="nav-link">
                         <i class="nav-icon fa fa-chart-line"></i>
                         <p>
                             {{ trans('labels.side_bar.item_1') }}
@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{ url("/admin/packages") }}" class="nav-link">
                         <i class="nav-icon fa fa-folder"></i>
                         <p>
                             {{ trans('labels.side_bar.item_2') }}

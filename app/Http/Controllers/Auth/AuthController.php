@@ -32,7 +32,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function login_form()
+    public function loginForm()
     {
         return view('auth.user.login');
     }
@@ -43,7 +43,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function process_login(Request $request)
+    public function processLogin(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
@@ -69,7 +69,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function signup_form()
+    public function signupForm()
     {
         return view('auth.user.signup');
     }
@@ -80,7 +80,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    protected function process_signup(Request $request)
+    protected function processSignup(Request $request)
     {
         $rules = [
             'name' => ['required', 'string', 'max:255'],
@@ -121,7 +121,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function process_adminLogin(Request $request)
+    public function processAdminLogin(Request $request)
     {
         $request->validate([
             'email' => 'required|email',

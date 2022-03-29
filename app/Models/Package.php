@@ -9,8 +9,6 @@ class Package extends Model
 {
     use HasFactory;
 
-    protected $table = "Package";
-
     protected $fillable = [
         "name",
         "max_file_upload",
