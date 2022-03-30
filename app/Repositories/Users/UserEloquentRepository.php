@@ -29,7 +29,7 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             ->first();
         if($user->role) {
             return true;
-        } else return false;
+        }
     }
 
     /**
@@ -40,7 +40,7 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
     public function getUsers($paginate, $orderBy)
     {
         return DB::table("users")
-            ->where('role', '=', 1)
+            ->where('role', config("const.user.user"))
             ->orderBy("id", $orderBy)
             ->paginate($paginate);
     }

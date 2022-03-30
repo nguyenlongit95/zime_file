@@ -27,7 +27,7 @@ class FileEloquentRepository extends EloquentRepository implements FileRepositor
     public function getAllUserFile($userId, $paginate, $orderBy)
     {
         return DB::table('files')
-            ->where('user_id', '=', $userId)
+            ->where('user_id', $userId)
             ->orderBy("id", $orderBy)
             ->paginate($paginate);
     }
@@ -41,7 +41,7 @@ class FileEloquentRepository extends EloquentRepository implements FileRepositor
     public function getTotalUserFile($userId)
     {
         return DB::table('files')
-            ->where('user_id', '=', $userId)
+            ->where('user_id', $userId)
             ->count();
     }
 
@@ -54,7 +54,7 @@ class FileEloquentRepository extends EloquentRepository implements FileRepositor
     public function getLastTimeUpload($userId)
     {
         return DB::table('files')
-            ->where('user_id', '=', $userId)
+            ->where('user_id', $userId)
             ->orderByDesc("id")
             ->first();
     }

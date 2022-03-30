@@ -63,13 +63,13 @@ class UserController extends Controller
         $totalFile = $this->fileRepository->getTotalUserFile($user->id);
         $lastTimeFile = $this->fileRepository->getLastTimeUpload($user->id);
         $package = $this->packageRepository->find($user->package_id);
-        return view("admin.pages.users.view", [
-            'user' => $user,
-            'files' => $files,
-            'package' => $package,
-            'totalFile' => $totalFile,
-            'lastTimeFile' => $lastTimeFile,
-        ]);
+        return view("admin.pages.users.view", compact(
+            'user',
+            'files',
+            'totalFile',
+            'package',
+            'lastTimeFile',
+        ));
     }
 
     /**
@@ -89,7 +89,9 @@ class UserController extends Controller
         $data = $request->all();
         if(!is_null($data['password'])) {
             $data['password'] = Hash::make($data['password']);
-        } else unset($data['password']);
+        } else {
+            unset($data['password']);
+        }
         try {
             $this->userRepository->update($data, $user->id);
             return redirect("/admin/users")->with('success', trans("auth.admin.update.success"));
