@@ -31,6 +31,7 @@ return [
         ],
         'delete' => [
             'success' => 'Package deleted',
+            'success1' => 'User deleted',
             'existed' => 'Package is using',
             'failed' => 'Failed to deleted',
         ]

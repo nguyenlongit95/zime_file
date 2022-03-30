@@ -15,9 +15,8 @@ class FileSeeder extends Seeder
     public function run()
     {
         DB::table("files")->insert([
-            'user_id' => 1,
-            "name" => "new",
-            'file_size' => 12,
+            ['user_id' => 11, "name" => "new2", 'file_size' => 12],
+            ['user_id' => 11, "name" => "new1", 'file_size' => 12],
         ]);
     }
 }

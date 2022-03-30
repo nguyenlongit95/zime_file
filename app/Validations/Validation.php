@@ -18,4 +18,18 @@ class Validation
             'max_file_upload' => 'required|integer',
         ]);
     }
+
+    /**
+     * Validation user
+     *
+     * @param $request
+     * @return void
+     */
+    public static function userValidation($request)
+    {
+        $request->validate([
+            'phone' => 'required|numeric|digits:10',
+            'address' => 'required',
+        ]);
+    }
 }
