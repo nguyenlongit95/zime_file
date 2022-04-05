@@ -57,7 +57,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-{{--                                        {!! $editors->appends($_GET)->links() !!}--}}
+                                        {!! $data->appends($_GET)->links("pagination::bootstrap-4") !!}
                                         </tbody>
                                     </table>
                                 </div>
@@ -98,6 +98,10 @@
 
 @section("custom-js")
     <script>
+        /**
+         * Confirm delete user
+         * @param id
+         */
         function confirmDelete(id) {
             $("#id_user").val(id);
             $("#deleteUser").modal("show");

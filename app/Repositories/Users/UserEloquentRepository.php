@@ -44,4 +44,15 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             ->orderBy("id", $orderBy)
             ->paginate($paginate);
     }
+
+    /**
+     * Split user email
+     *
+     * @param $email
+     * @return mixed|string
+     */
+    public function splitUserEmail($email)
+    {
+        return explode("@", $email)[0];
+    }
 }

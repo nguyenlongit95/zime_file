@@ -58,4 +58,17 @@ class FileEloquentRepository extends EloquentRepository implements FileRepositor
             ->orderByDesc("id")
             ->first();
     }
+
+    /**
+     * Delete user's file function
+     *
+     * @param $userId
+     * @return int
+     */
+    public function deleteUserFile($userId)
+    {
+        return DB::table('files')
+            ->where('user_id', $userId)
+            ->delete();
+    }
 }

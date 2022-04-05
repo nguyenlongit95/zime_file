@@ -95,30 +95,15 @@
                                                 <td> {{ $file->id }} </td>
                                                 <td> {{ $file->name }} </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#viewFileInfo">{{ trans("labels.admin.btn.btn_view") }}</button>
+                                                    <button type="button" onclick="viewFile({{ $file->id }})" class="btn btn-sm btn-success" data-toggle="modal" data-target="#viewFileInfo">{{ trans("labels.admin.btn.btn_view") }}</button>
                                                     <div class="modal fade" id="viewFileInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h3 class="modal-title" id="exampleModalLabel" style="color: blue">{{ trans("labels.admin.file.bread_crum") }}</h3>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">{{ trans("labels.admin.file.name") }} {{ $file->name }} </h5><br>
-                                                                    <h5 class="modal-title" id="exampleModalLabel">{{ trans("labels.admin.file.size") }} {{ $file->file_size }}</h5><br>
-                                                                    <h5 class="modal-title" id="exampleModalLabel">{{ trans("labels.admin.file.time") }} {{ $file->created_at }}</h5><br>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans("labels.admin.btn.btn_close") }}</button>
-                                                                </div>
-                                                            </div>
+                                                        <div class="modal-dialog" id="viewFileContent" role="document">
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        {!! $files->appends($_GET)->links("pagination::bootstrap-4") !!}
                                         </tbody>
                                     </table>
                                 </div>
@@ -131,5 +116,29 @@
         </section>
         <!-- /.content -->
     </div>
+@endsection
+
+@section('custom-js')
+    <script>
+        /**
+         * View file detail
+         * @param id
+         */
+        function viewFile(id) {
+            $.ajax({
+                url: '{{ url("/admin/file-detail") }}',
+                method: 'get',
+                data: {
+                    id: id,
+                },
+                success: function (response) {
+                    console.log(response);
+                    if(response != null) {
+                        $("#viewFileContent").html(response);
+                    }
+                }
+            })
+        }
+    </script>
 @endsection
 

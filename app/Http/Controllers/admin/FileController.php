@@ -33,4 +33,20 @@ class FileController extends Controller
     {
         return $this->fileRepository->getAll(config('const.paginate'), 'DESC');
     }
+
+    /**
+     * View detail file
+     *
+     * @param Request $request
+     * @return string|null
+     */
+    public function view(Request $request)
+    {
+        $data = $request->all();
+        $file = $this->fileRepository->find($data["id"]);
+        if(empty($file)) {
+            return null;
+        }
+        return view("admin.pages.partials.view_file", compact('file'))->render();
+    }
 }

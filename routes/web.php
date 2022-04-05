@@ -49,4 +49,6 @@ Route::group(["prefix" => "admin"], function () {
        Route::post('/{id}/update', [\App\Http\Controllers\admin\UserController::class, 'update']);
        Route::post('/delete', [\App\Http\Controllers\admin\UserController::class, 'destroy']);
     });
+
+    Route::get('/file-detail', [\App\Http\Controllers\admin\FileController::class, 'view']);
 });

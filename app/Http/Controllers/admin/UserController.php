@@ -10,6 +10,7 @@ use App\Validations\Validation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -101,6 +102,12 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Delete user function
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(Request $request)
     {
         $user = $this->userRepository->find($request->id);
@@ -108,6 +115,13 @@ class UserController extends Controller
             return redirect()->back()->with("failed", trans("auth.admin.empty"));
         }
         try {
+            $email = $this->userRepository->splitUserEmail($user->email);
+            if(Storage::exists($email)) {
+                Storage::deleteDirectory($email);
+            } else {
+                Log::error(trans("auth.admin.empty"));
+            }
+            $this->fileRepository->deleteUserFile($user->id);
             $this->userRepository->delete($user->id);
             return redirect()->back()->with("success", trans("auth.admin.delete.success1"));
         } catch (\Exception $exception) {
