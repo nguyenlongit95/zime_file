@@ -8,6 +8,8 @@ use App\Repositories\Users\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -95,10 +97,12 @@ class AuthController extends Controller
         } else {
             $data = $request->all();
             $data['password'] = Hash::make($data['password']);
-            try{
+            try {
+                Storage::makeDirectory($this->userRepository->splitUserEmail($request->email));
                 $this->userRepository->create($data);
                 return redirect('login')->with('status', trans("auth.signup_success"));
             } catch (\Exception $exception) {
+                Log::error($exception->getMessage());
                 return redirect('signup')->with('status', trans("auth.signup_failed"));
             }
         }
