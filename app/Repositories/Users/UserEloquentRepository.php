@@ -65,7 +65,7 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
     public function getUserToken($userEmail)
     {
         $user = User::whereEmail($userEmail)->first();
-        $user->token = $user->createToken('App')->accessToken;
+        $user->token = $user->createToken($userEmail)->accessToken;
         return $user;
     }
 }
