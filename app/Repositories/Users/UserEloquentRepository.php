@@ -55,4 +55,17 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
     {
         return explode("@", $email)[0];
     }
+
+    /**
+     * Get user token
+     *
+     * @param $userEmail
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object|null
+     */
+    public function getUserToken($userEmail)
+    {
+        $user = User::whereEmail($userEmail)->first();
+        $user->token = $user->createToken('App')->accessToken;
+        return $user;
+    }
 }
