@@ -101,6 +101,16 @@
             Not a member? <a href="{{ url("/signup") }}">Signup</a>
         </div>
     </form>
+    <input type="hidden" name="token" id="token" value="@if(isset($token)) {{ $token }} @endif">
+    <script>
+        let token = document.getElementById("token").value;
+        if(token) {
+            document.cookie = 'access_token = ' + token;
+            window.location.replace("{{ url("/home") }}");
+        } else {
+            window.location.replace("{{ url("/login") }}");
+        }
+    </script>
 </div>
 </body>
 </html>

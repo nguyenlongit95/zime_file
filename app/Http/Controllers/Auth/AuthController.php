@@ -58,8 +58,8 @@ class AuthController extends Controller
         );
 
         if(Auth::attempt($user_data)) {
-            // Todo return token
-            return redirect('/home');
+            $token = $this->userRepository->getUserToken($user_data['email'])->token;
+            return view('auth.user.login', compact('token'));
         } else {
             return back()->with("error", trans("auth.login_failed"));
         }
