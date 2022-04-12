@@ -71,4 +71,48 @@ class FileEloquentRepository extends EloquentRepository implements FileRepositor
             ->where('user_id', $userId)
             ->delete();
     }
+
+    /**
+     * Show detail one file
+     *
+     * @param $userId
+     * @param $fileId
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object|null
+     */
+    public function showDetailFile($fileId)
+    {
+        return DB::table('files')
+            ->where('id', $fileId)
+            ->first();
+    }
+
+    /**
+     * Delete user's file
+     *
+     * @param $fileId
+     * @return array|int
+     */
+    public function deleteFile($fileId)
+    {
+        $fileDeleteId =  DB::table("files")->where("id", $fileId)->first()->fileId;
+        if(isset($fileDeleteId)) {
+            return DB::table("packages")->where("id", $fileDeleteId)->delete();
+        } else {
+            return [];
+        }
+    }
+
+    /**
+     * Upload user's file function
+     *
+     * @param $userId
+     * @param $fileName
+     * @return bool
+     */
+    public function uploadFile($userId, $fileName, $size)
+    {
+        return DB::table("files")->insert([
+            ['user_id' => $userId, "name" => $fileName, 'file_size' => $size],
+        ]);
+    }
 }

@@ -24,7 +24,7 @@ class PackageEloquentRepository extends EloquentRepository implements PackageRep
      */
     public function checkExitsPackage($userId)
     {
-        $packageId =  DB::table("users")->where("id", $userId)->first()->packageId;
+        $packageId =  DB::table("users")->where("id", $userId)->first()->package_id;
         if(isset($packageId)) {
             return DB::table("packages")->where("id", $packageId)->first();
         } else {
