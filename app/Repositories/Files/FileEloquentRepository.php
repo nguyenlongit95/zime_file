@@ -94,7 +94,7 @@ class FileEloquentRepository extends EloquentRepository implements FileRepositor
      */
     public function deleteFile($fileId)
     {
-        $fileDeleteId =  DB::table("files")->where("id", $fileId)->first()->fileId;
+        $fileDeleteId = DB::table("files")->where("id", $fileId)->first()->fileId;
         if(isset($fileDeleteId)) {
             return DB::table("packages")->where("id", $fileDeleteId)->delete();
         } else {
@@ -111,8 +111,8 @@ class FileEloquentRepository extends EloquentRepository implements FileRepositor
      */
     public function uploadFile($userId, $fileName, $size)
     {
-        return DB::table("files")->insert([
+        return DB::table("files")->insert(
             ['user_id' => $userId, "name" => $fileName, 'file_size' => $size],
-        ]);
+        );
     }
 }
