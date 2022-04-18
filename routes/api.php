@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post("/getAllPackage", [\App\Http\Controllers\api\PackageController::class, 'getAllPackage']);
+
+Route::post("/checkUserPackage", [\App\Http\Controllers\api\PackageController::class, 'checkUserPackage']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

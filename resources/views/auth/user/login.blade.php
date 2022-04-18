@@ -106,10 +106,11 @@
         let token = document.getElementById("token").value;
         if(token) {
             document.cookie = 'access_token = ' + token;
-            window.location.replace("{{ url("/home") }}");
-        } else {
-            window.location.replace("{{ url("/login") }}");
+            window.location.replace("{{ url("/package") }}");
         }
+        {{--else {--}}
+        {{--    window.location.replace("{{ url("/login") }}");--}}
+        {{--}--}}
     </script>
 </div>
 </body>

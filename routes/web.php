@@ -31,6 +31,8 @@ Route::get('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'signup
 
 Route::post('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'processSignup']);
 
+Route::get('/package', [\App\Http\Controllers\user\PackageController::class, 'selectPackage']);
+
 Route::group(["prefix" => "admin"], function () {
     Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'dashboard']);
 

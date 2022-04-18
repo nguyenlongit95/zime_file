@@ -44,9 +44,25 @@ class PackageController extends Controller
     {
         $package = $this->packageRepository->checkExitsPackage($request->id);
         if(empty($package)) {
-            return ResponseHelper::notFound(trans("auth.admin.empty"));
+            return app()->make(ResponseHelper::class)->notFound(trans("auth.admin.empty"));
         } else {
-            return ResponseHelper::success($package);
+            return app()->make(ResponseHelper::class)->success($package);
+        }
+    }
+
+    /**
+     * Get all package
+     *
+     * @param Request $request
+     * @return \App\Helpers\JsonResponse
+     */
+    public function getAllPackage(Request $request)
+    {
+        $package = $this->packageRepository->listAll();
+        if(empty($package)) {
+            return app()->make(ResponseHelper::class)->notFound(trans("auth.admin.empty"));
+        } else {
+            return app()->make(ResponseHelper::class)->success($package);
         }
     }
 }
