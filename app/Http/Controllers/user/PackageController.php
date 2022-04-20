@@ -8,6 +8,8 @@ use App\Repositories\Files\FileRepositoryInterface;
 use App\Repositories\Packages\PackageRepositoryInterface;
 use App\Repositories\Users\UserRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class PackageController extends Controller
 {
@@ -34,12 +36,12 @@ class PackageController extends Controller
     }
 
     /**
-     * Select package page
+     * Display all package
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function selectPackage(Request $request)
+    public function viewPackage(Request $request)
     {
         $package = $this->packageRepository->listAll();
         if(empty($package)) {
@@ -47,5 +49,38 @@ class PackageController extends Controller
         } else {
             return view('user.package', compact("package"));
         }
+
+    }
+
+    /**
+     * Redirect fileManage if package_id exits
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function packageManage(Request $request)
+    {
+        if(Auth::user()->package_id)
+            return redirect('file-manage');
+        else
+            return redirect('view-package');
+    }
+
+    /**
+     * User select package
+     *
+     * @param Request $request
+     * @return
+     */
+    public function selectUserPackage(Request $request)
+    {
+        $data = $request->all();
+        try {
+            $this->userRepository->updatePackage(Auth::user()->id, $data["id"]);
+            return app()->make(ResponseHelper::class)->success($data);
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+        }
+
     }
 }

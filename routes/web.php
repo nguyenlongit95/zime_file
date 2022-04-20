@@ -31,7 +31,13 @@ Route::get('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'signup
 
 Route::post('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'processSignup']);
 
-Route::get('/package', [\App\Http\Controllers\user\PackageController::class, 'selectPackage']);
+Route::get('/package', [\App\Http\Controllers\user\PackageController::class, 'packageManage']);
+
+Route::get('/file-manage', [\App\Http\Controllers\user\FileController::class, 'fileManage']);
+
+Route::get('/view-package', [\App\Http\Controllers\user\PackageController::class, 'viewPackage']);
+
+Route::post('/select-package', [\App\Http\Controllers\user\PackageController::class, 'selectUserPackage']);
 
 Route::group(["prefix" => "admin"], function () {
     Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'dashboard']);

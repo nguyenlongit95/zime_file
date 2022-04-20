@@ -42,7 +42,7 @@
                                                     <li>Maximum File: {{ $package->max_file_upload }}</li>
                                                     <li>File Size: {{ $package->max_file_size }}</li>
                                                 </ul>
-                                                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Select</button>
+                                                <button type="button" onclick="selectPackage({{ $package->id }})" class="w-100 btn btn-lg btn-outline-primary">Select</button>
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +54,32 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="token" id="token" value="{{ csrf_token() }}">
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+    /**
+     * User select package
+     * @param id
+     */
+    function selectPackage(id) {
+        let token = document.getElementById("token").value;
+        $.ajax({
+            url: '{{ url("/select-package") }}',
+            type: 'post',
+            data: {
+                id: id,
+                _token: token,
+            },
+            success: function (response) {
+                console.log(response);
+                if(response!=null) {
+                    window.location.replace("{{ url("/file-manage") }}");
+                }
+            }
+        })
+    }
+</script>
 </body>
 </html>
