@@ -81,6 +81,5 @@ class PackageController extends Controller
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
         }
-
     }
 }
