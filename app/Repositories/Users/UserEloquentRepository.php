@@ -82,4 +82,14 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             ->where('id', $userId)
             ->update(['package_id' => $packageId]);
     }
+
+    /**
+     * Count total user
+     *
+     * @return int
+     */
+    public function countTotalUser()
+    {
+        return DB::table('users')->count();
+    }
 }

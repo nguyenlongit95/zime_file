@@ -63,6 +63,13 @@ return [
             'radio2' => ' 64',
             'radio3' => ' 128',
         ]
-
+    ],
+    'user' => [
+        'title' => [
+            't1' => 'Select Package',
+            't2' => 'File Manage',
+            't3' => 'Maximum File: ',
+            't4' => 'File Size: ',
+        ]
     ],
 ];

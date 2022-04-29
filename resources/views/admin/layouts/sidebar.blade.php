@@ -39,14 +39,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fa fa-file"></i>
-                        <p>
-                            {{ trans('labels.side_bar.item_3') }}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ url("/admin/users") }}" class="nav-link">
                         <i class="nav-icon fa fa-user"></i>
                         <p>

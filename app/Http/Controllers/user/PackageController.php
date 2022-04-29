@@ -49,7 +49,6 @@ class PackageController extends Controller
         } else {
             return view('user.package', compact("package"));
         }
-
     }
 
     /**
