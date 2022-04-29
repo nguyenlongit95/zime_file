@@ -14,9 +14,17 @@ class FileSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("files")->insert([
-            ['user_id' => 11, "name" => "new2", 'file_size' => 12],
-            ['user_id' => 11, "name" => "new1", 'file_size' => 12],
-        ]);
+        $num = 0;
+        for($i = 1; $i <= 30; $i++) {
+            for($j = 1; $j <= rand(0,500); $j++) {
+                $num ++;
+                DB::table("files")->insert([
+                    'user_id' => rand(2,101),
+                    "name" => "new" . $num,
+                    'file_size' => 12,
+                    'created_at' => new \DateTime($i.'st April 2022'),
+                ]);
+            }
+        }
     }
 }

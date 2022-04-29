@@ -57,11 +57,15 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                        {!! $data->appends($_GET)->links("pagination::bootstrap-4") !!}
+
                                         </tbody>
+
                                     </table>
                                 </div>
                             @endif
+                            <div style="margin-left: 3%">
+                                {!! $data->appends($_GET)->links("pagination::bootstrap-4") !!}
+                            </div>
                         </div>
                     </div>
                 </div>

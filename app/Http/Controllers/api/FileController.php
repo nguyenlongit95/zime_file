@@ -49,9 +49,9 @@ class FileController extends Controller
     {
         $file = $this->fileRepository->getAllUserFile($request->id, config('const.paginate'), 'DESC');
         if(empty($file)) {
-            return ResponseHelper::notFound(trans("auth.admin.empty"));
+            return app()->make(ResponseHelper::class)->notFound(trans("auth.admin.empty"));
         } else {
-            return ResponseHelper::success($file);
+            return app()->make(ResponseHelper::class)->success($file);
         }
     }
 
@@ -65,9 +65,9 @@ class FileController extends Controller
     {
         $file = $this->fileRepository->showDetailFile($request->id);
         if(empty($file)) {
-            return ResponseHelper::notFound(trans("auth.admin.empty"));
+            return app()->make(ResponseHelper::class)->notFound(trans("auth.admin.empty"));
         } else {
-            return ResponseHelper::success($file);
+            return app()->make(ResponseHelper::class)->success($file);
         }
     }
 
@@ -81,9 +81,9 @@ class FileController extends Controller
     {
         $file = $this->fileRepository->deleteFile($request->id);
         if(empty($file)) {
-            return ResponseHelper::notFound(trans("auth.admin.empty"));
+            return app()->make(ResponseHelper::class)->notFound(trans("auth.admin.empty"));
         } else {
-            return ResponseHelper::success($file);
+            return app()->make(ResponseHelper::class)->success($file);
         }
     }
 
@@ -98,10 +98,10 @@ class FileController extends Controller
         $maxSize = $this->packageRepository->checkExitsPackage($request->id)->max_file_size;
         $userFileSize = $request->file($request->name)->getSize();
         if($userFileSize > $maxSize) {
-            return ResponseHelper::error();
+            return app()->make(ResponseHelper::class)->error();
         } else {
             $file = $this->fileRepository->uploadFile($request->id, $request->name, $userFileSize);
-            return ResponseHelper::success($file);
+            return app()->make(ResponseHelper::class)->success($file);
         }
     }
 }

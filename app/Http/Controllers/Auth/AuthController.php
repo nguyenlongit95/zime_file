@@ -143,4 +143,14 @@ class AuthController extends Controller
             return back()->with("error", trans("auth.login_failed"));
         }
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function processLogout(Request $request)
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
 }

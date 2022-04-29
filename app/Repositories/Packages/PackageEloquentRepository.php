@@ -31,4 +31,36 @@ class PackageEloquentRepository extends EloquentRepository implements PackageRep
             return [];
         }
     }
+
+    /**
+     * Count total package
+     *
+     * @return int
+     */
+    public function countTotalPackage()
+    {
+        return DB::table('packages')->count();
+    }
+
+    /**
+     * Get package name
+     *
+     * @param $packageId
+     * @return mixed
+     */
+    public function getPackageName($packageId)
+    {
+        $package = DB::table("packages")->where("id",  $packageId)->first();
+        return $package->name;
+    }
+    /**
+     * Get total user who is using package by package id
+     *
+     * @param $packageId
+     * @return int
+     */
+    public function getTotalUser($packageId)
+    {
+        return DB::table("users")->where("package_id", $packageId)->count();
+    }
 }

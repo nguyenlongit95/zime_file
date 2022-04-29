@@ -115,4 +115,27 @@ class FileEloquentRepository extends EloquentRepository implements FileRepositor
             ['user_id' => $userId, "name" => $fileName, 'file_size' => $size],
         );
     }
+
+    /**
+     * Count total file
+     *
+     * @return int
+     */
+    public function countTotalFile()
+    {
+        return DB::table('files')->count();
+    }
+
+    /**
+     * Count total upload file by date
+     *
+     * @param $date
+     * @return int
+     */
+    public function countTotalFileByDate($date)
+    {
+        return DB::table("files")
+            ->where("created_at", 'LIKE',  $date.'%')
+            ->count();
+    }
 }

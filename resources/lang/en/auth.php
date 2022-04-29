@@ -35,5 +35,27 @@ return [
             'existed' => 'Package is using',
             'failed' => 'Failed to deleted',
         ]
+    ],
+    'file' => [
+        'empty' => 'File not found',
+        'failed' => [
+            'error' => "Your file name isn't correct",
+            'full' => 'Your package is full',
+            'size' => 'Your file is oversize',
+        ],
+        'success' => "Upload file success",
+    ],
+    'dashboard' => [
+        'label' => [
+            '1' => 'Users',
+            '2' => 'Files',
+            '3' => 'Package',
+        ],
+        'packages' => [
+            '1' => 'Basic',
+            '2' => 'Normal',
+            '3' => 'Vip',
+            '4' => 'Expert',
+        ]
     ]
 ];

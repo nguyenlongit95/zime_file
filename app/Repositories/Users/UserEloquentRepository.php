@@ -68,4 +68,28 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
         $user->token = $user->createToken($userEmail)->accessToken;
         return $user;
     }
+
+    /**
+     * Update user package
+     *
+     * @param $userId
+     * @param $packageId
+     * @return int
+     */
+    public function updatePackage($userId, $packageId)
+    {
+        return DB::table("users")
+            ->where('id', $userId)
+            ->update(['package_id' => $packageId]);
+    }
+
+    /**
+     * Count total user
+     *
+     * @return int
+     */
+    public function countTotalUser()
+    {
+        return DB::table('users')->count();
+    }
 }

@@ -31,8 +31,30 @@ Route::get('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'signup
 
 Route::post('/signup', [\App\Http\Controllers\Auth\AuthController::class, 'processSignup']);
 
+Route::get('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'processLogout']);
+
+Route::get('/package', [\App\Http\Controllers\user\PackageController::class, 'packageManage']);
+
+Route::get('/file-manage', [\App\Http\Controllers\user\FileController::class, 'fileManage']);
+
+Route::get('/file-manage/show/{id}', [\App\Http\Controllers\user\FileController::class, 'showFileDetail']);
+
+Route::get('/file-manage/delete/{id}', [\App\Http\Controllers\user\FileController::class, 'deleteFile']);
+
+Route::post('/file-manage/upload', [\App\Http\Controllers\user\FileController::class, 'uploadFile']);
+
+Route::get('/view-package', [\App\Http\Controllers\user\PackageController::class, 'viewPackage']);
+
+Route::post('/select-package', [\App\Http\Controllers\user\PackageController::class, 'selectUserPackage']);
+
 Route::group(["prefix" => "admin"], function () {
     Route::get('/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'dashboard']);
+
+    Route::get('/dashboard-donutchart-data', [\App\Http\Controllers\admin\DashboardController::class, 'processDashboard']);
+
+    Route::get('/dashboard-areachart-data', [\App\Http\Controllers\admin\DashboardController::class, 'processDashboard1']);
+
+    Route::get('/dashboard-linechart-data', [\App\Http\Controllers\admin\DashboardController::class, 'processDashboard2']);
 
     Route::group(["prefix" => "packages"], function () {
         Route::get('/', [\App\Http\Controllers\admin\PackageController::class, 'index']);
